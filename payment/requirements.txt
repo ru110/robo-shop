@@ -1,4 +1,5 @@
-uwsgi
+opentelemetry-instrumentation-flask
+opentelemetry-instrumentation-requests
 Flask
 requests
 pika

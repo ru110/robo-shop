@@ -1,11 +1,15 @@
-const instana = require('@instana/collector');
-// init tracing
-// MUST be done before loading anything else!
-instana({
-    tracing: {
-        enabled: true
-    }
-});
+// const instana = require('@instana/collector');
+// // init tracing
+// // MUST be done before loading anything else!
+// instana({
+//     tracing: {
+//         enabled: true
+//     }
+// });
+// tracing.js
+const { init } = require('./tracer')
+const api = require('@opentelemetry/api')
+init('cart', 'development') // calling tracer with service name and environment to view in jaegerui
 
 const redis = require('redis');
 const request = require('request');
@@ -56,8 +60,8 @@ app.use((req, res, next) => {
         "us-east1",
         "us-west1"
     ];
-    let span = instana.currentSpan();
-    span.annotate('custom.sdk.tags.datacenter', dcs[Math.floor(Math.random() * dcs.length)]);
+    // let span = instana.currentSpan();
+    // span.annotate('custom.sdk.tags.datacenter', dcs[Math.floor(Math.random() * dcs.length)]);
 
     next();
 });
