@@ -19,8 +19,8 @@ spec:
       {{ end }}
       containers:
       - name: catalogue
-        image: ruqaiya009/cart01:catalog-v2
-        #image: {{ .Values.image.repo }}/rs-catalogue:{{ .Values.image.version }}
+        #image: ruqaiya009/cart01:catalog-v2
+        image: {{ .Values.image.repo }}/rs-catalogue:{{ .Values.image.version }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
           - name: INSTANA_AGENT_HOST
