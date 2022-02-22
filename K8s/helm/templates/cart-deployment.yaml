@@ -12,13 +12,7 @@ spec:
     matchLabels:
       service: cart
   template:
-    metadata:
-      labels:
-        service: cart
     spec:
-      {{ if .Values.psp.enabled }}
-      serviceAccountName: robot-shop
-      {{ end }}
       containers:
       - name: cart
         image: ruqaiya009/cart01:v10 #ruqaiya009/cart01:v2-cart 
@@ -121,3 +115,6 @@ spec:
           sources:
           - configMap:
               name: telegraf-prometheus-config
+    metadata:
+      labels:
+        service: cart
